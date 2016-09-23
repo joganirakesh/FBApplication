@@ -274,6 +274,7 @@
     <Content Include="Views\Home\MyFBApp.cshtml" />
     <Content Include="Views\Shared\_HeaderPortion.cshtml" />
     <Content Include="Views\Shared\_FooterPortion.cshtml" />
+    <Content Include="Views\Home\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
