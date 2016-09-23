@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNet.Facebook
+@{
+    ViewBag.Title = "Home Page";
+}
+<script>
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '@GlobalFacebookConfiguration.Configuration.AppId', // App ID
+            status: true, // check login status
+            cookie: true, // enable cookies to allow the server to access the session
+            xfbml: true  // parse XFBML
+        });
+        loadDocument();
+
+    };
+
+    function loadDocument() {
+
+        $.getScript('//connect.facebook.net/en_US/sdk.js', function () {
+            FB.init({
+                appId: '@GlobalFacebookConfiguration.Configuration.AppId',
+                cookie: true,
+                cache: true,
+                version: 'v2.7' // or v2.1, v2.2, v2.3, ...
+            });
+
+            FB.getLoginStatus(function (res) {
+                if (res.authResponse) {
+                    FB.api('/me', 'GET', { "fields": "email,name,first_name,last_name,about" }, function (response) {
+                        var obj = response;
+                    });
+
+                } else {
+                    console.log('Authorization failed.');
+                }
+            }, { scope: 'email' });
+
+        });
+    }
+
+
+</script>
+<div class="container">
+    <div class="row">
+        <label>Facebook ID: <span id="spfacebookid"></span></label>
+    </div>
+    <div class="row">
+        <label>Email: <span id="spEmail"></span></label>
+    </div>
+    <div class="row">
+        <label>Fist Name: <span id="spfirst_name"></span></label>
+    </div>
+    <div class="row">
+        <label>Last Name: <span id="splast_name"></span></label>
+    </div>
+    <div class="row">
+        <label>Display Name: <span id="spname"></span></label>
+    </div>
+
+</div>
+
+
