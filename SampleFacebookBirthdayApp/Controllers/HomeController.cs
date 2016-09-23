@@ -11,13 +11,13 @@ namespace SampleFacebookBirthdayApp.Controllers
 {
     public class HomeController : Controller
     {
-        [FacebookAuthorize()]
-        public ActionResult Index(FacebookContext context)
+
+        public ActionResult Index(string context)
         {
             return View();
         }
-
-        public ActionResult MyFBApp(string context)
+         [FacebookAuthorize()]
+        public ActionResult MyFBApp(FacebookContext context)
         {
             return View();
         }
