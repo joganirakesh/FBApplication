@@ -1,25 +1,63 @@
 ﻿@using Microsoft.AspNet.Facebook
 @{
     ViewBag.Title = "MyFBApp";
-
-    var AppID = @GlobalFacebookConfiguration.Configuration.AppId;
 }
-
-
 <script src="//connect.facebook.net/en_US/all.js"></script>
+<script>
 
-<script src="~/Scripts/jquery-1.10.2.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#btnGotoMyApp").click(function () {
-            window.location = "https://www.facebook.com/v2.5/dialog/oauth?client_id=" +@GlobalFacebookConfiguration.Configuration.AppId +"&response_type=code&&redirect_uri=https://localhost:44306/Home/Index&scope=public_profile%2Cuser_friends%2Cpublish_actions%2Cemail%2Cuser_education_history%2Cuser_location%2Cuser_hometown%2Cuser_work_history%2Cuser_about_me%2Cuser_actions.books%2Cuser_photos%2Cuser_birthday";
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '@GlobalFacebookConfiguration.Configuration.AppId', // App ID
+            status: true, // check login status
+            cookie: true, // enable cookies to allow the server to access the session
+            xfbml: true  // parse XFBML
         });
-    });
+        loadDocument();
+
+    };
+
+    function loadDocument() {
+
+        $.getScript('//connect.facebook.net/en_US/sdk.js', function () {
+            FB.init({
+                appId: '@GlobalFacebookConfiguration.Configuration.AppId',
+                cookie: true,
+                cache: true,
+                version: 'v2.7' // or v2.1, v2.2, v2.3, ...
+            });
+
+            FB.getLoginStatus(function (res) {
+                if (res.authResponse) {
+                    FB.api('/me', 'GET', { "fields": "email,name,first_name,last_name,about" }, function (response) {
+                        var obj = response;
+                    });
+
+                } else {
+                    console.log('Authorization failed.');
+                }
+            }, { scope: 'email' });
+
+        });
+    }
+
+
 </script>
-
-<div>
-
-    <button id="btnGotoMyApp">Check Your FB Information</button>
+<div class="container">
+    <div class="row">
+        <label>Facebook ID: <span id="spfacebookid"></span></label>
+    </div>
+    <div class="row">
+        <label>Email: <span id="spEmail"></span></label>
+    </div>
+    <div class="row">
+        <label>Fist Name: <span id="spfirst_name"></span></label>
+    </div>
+    <div class="row">
+        <label>Last Name: <span id="splast_name"></span></label>
+    </div>
+    <div class="row">
+        <label>Display Name: <span id="spname"></span></label>
+    </div>
 
 </div>
+

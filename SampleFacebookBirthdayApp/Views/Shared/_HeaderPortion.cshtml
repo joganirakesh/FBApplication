@@ -1,0 +1,49 @@
+﻿
+<header id="header" class="header ">
+    <div class="container">
+        <h1 class="logo pull-left">
+            <a href="#">
+                @*<span class="logo-title">Tempo</span>*@
+                @*<img src="~/Images/ms-icon-310x310.png" class="img-responsive" />*@
+            </a>
+        </h1><!--//logo-->
+        @*<nav id="main-nav" class="main-nav navbar-right" role="navigation">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#cssmenu" aria-expanded="true">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="cssmenu" aria-expanded="true">
+                <ul class="nav navbar-nav">
+                    <li id="lihome" class="nav-item">@Html.ActionLink("HOME", "Index", "Home")</li>
+
+                    <li id="liproductlist" class="nav-item">@Html.ActionLink("PRODUCT", "ProductList", "Product")</li>
+
+                    <li id="liaboutus" class="nav-item">@Html.ActionLink("ABOUT US", "AboutUs", "Home")</li>
+                    <li id="licontactus" class="nav-item">@Html.ActionLink("CONTACT US", "ContactUs", "Home")</li>
+                    <li class="nav-item">@Html.ActionLink("ADMIN", "Login", new { Area = "Admin", controller = "AdminDashboard" })</li>
+                </ul>
+            </div>
+        </nav>*@
+    </div>
+</header>
+
+<style>
+    #cssmenu li.active {
+        background: #47c9af;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+        #cssmenu li.active a {
+            color: #fff !important;
+        }
+
+    #cssmenu .nav-item {
+        min-width: 100px !important;
+        text-align: center !important;
+    }
+</style>
