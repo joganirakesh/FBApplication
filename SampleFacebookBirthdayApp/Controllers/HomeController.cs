@@ -33,7 +33,8 @@ namespace SampleFacebookBirthdayApp.Controllers
 
             return new MemoryStream(imageData);
         }
-        public ActionResult Result()
+       
+        public ActionResult Result(FacebookContext context)
         {
             
             Image imgbackground = Image.FromFile(Server.MapPath("~/Images") + "//background.png");
@@ -42,7 +43,7 @@ namespace SampleFacebookBirthdayApp.Controllers
 
             g.DrawImage(Image.FromStream(GetStreamFromUrl("https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/user-male-circle-blue-128.png")), new Point(50, 50));
 
-            g.DrawImage(Image.FromStream(GetStreamFromUrl("http://image.flaticon.com/icons/png/128/149/149071.png")), new Point(150, 150));
+           // g.DrawImage(Image.FromStream(GetStreamFromUrl("http://image.flaticon.com/icons/png/128/149/149071.png")), new Point(150, 150));
 
             Bitmap bitmap_Background = (Bitmap)imgbackground;
             imgbackground.Save(Server.MapPath("~/Images") + "\\output.jpg", ImageFormat.Jpeg);

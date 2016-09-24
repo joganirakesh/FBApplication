@@ -7,15 +7,44 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btnGotoMyApp").click(function () {
-            window.location = "https://www.facebook.com/v2.5/dialog/oauth?client_id=" +@GlobalFacebookConfiguration.Configuration.AppId +"&response_type=code&&redirect_uri=https://localhost:44306/Home/Index&scope=public_profile%2Cuser_friends%2Cpublish_actions%2Cemail%2Cuser_education_history%2Cuser_location%2Cuser_hometown%2Cuser_work_history%2Cuser_about_me%2Cuser_actions.books%2Cuser_photos%2Cuser_birthday";
+            var redirect_url = "https://localhost:44306/Home/result";
+            var appID = @GlobalFacebookConfiguration.Configuration.AppId;
+            var scope = "public_profile%2Cuser_friends%2Cpublish_actions%2Cemail%2Cuser_education_history%2Cuser_location%2Cuser_hometown%2Cuser_work_history%2Cuser_about_me%2Cuser_actions.books%2Cuser_photos%2Cuser_birthday";
+            window.location = "https://www.facebook.com/v2.5/dialog/oauth?client_id=" +appID +"&redirect_uri=" + redirect_url + "&scope="+scope;
         });
     });
 </script>
+<style>
+   
+    .box {
+         background-image:url("../../Images/background.png");
+    border-top: 3px solid #ffc400;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    background-image: url(../img/asd.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    /* height: 600px; */
+    border-radius: 5px;
+    box-shadow: 0px 4px 5px #aeaeae;
+}
 
+</style>
 <div class="container ">
-    <div class="page-header">
-        <h3>Index</h3>
-    </div>
+   
+    <div class="row box">
+        <div class="relative">
+            <h1 class="innerti"> दीजिए श्रधांजलि १७ शहीदो को... </h1>
+        </div>
+        <div class="bag">
+            <img src="http://justwoow.com/asset/img/border.png">
+            <div class="text-center">
+                <a id="btnGotoMyApp" href="https://www.facebook.com/v2.5/dialog/oauth?client_id=217337802000551&amp;state=83059dec601d03833462c890b41684c8&amp;response_type=code&amp;sdk=php-sdk-5.1.2&amp;redirect_uri=http%3A%2F%2Fjustwoow.com%2Fresult.php%3F_u%3D17-heroes&amp;scope=public_profile%2Cuser_friends%2Cpublish_actions%2Cemail%2Cuser_education_history%2Cuser_location%2Cuser_hometown%2Cuser_work_history%2Cuser_about_me%2Cuser_actions.books%2Cuser_photos%2Cuser_birthday" class="btn  btn-social1 btn-facebook1">
+                    <span class="glyphicon glyphicon-thumbs-up  "></span> Check Your Result
+                </a>
+            </div>
+        </div>
+        </div>
     
-    <button id="btnGotoMyApp">Check Your FB Information</button>
 </div>

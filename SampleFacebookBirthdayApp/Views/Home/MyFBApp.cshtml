@@ -30,6 +30,11 @@
                 if (res.authResponse) {
                     FB.api('/me', 'GET', { "fields": "email,name,first_name,last_name,about" }, function (response) {
                         var obj = response;
+                        $("#spfacebookid").text(response.id);
+                        $("#spEmail").text(response.email);
+                        $("#spfirst_name").text(response.first_name);
+                        $("#splast_name").text(response.last_name);
+                        $("#spname").text(response.name);
                     });
 
                 } else {
@@ -47,7 +52,7 @@
         <label>Facebook ID: <span id="spfacebookid"></span></label>
     </div>
     <div class="row">
-        <label>Email: <span id="spEmail"></span></label>
+        <label>Email: <span id=""></span></label>
     </div>
     <div class="row">
         <label>Fist Name: <span id="spfirst_name"></span></label>
