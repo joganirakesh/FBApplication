@@ -3,32 +3,50 @@
     ViewBag.Title = "A to Z Apps";
 }
 <style>
-    
+    .hover_data span a
+    {
+        margin-top:20%!important;
+    }
 </style>
 <div class="container ">
-    
+
     <div class="page-header">
         <h3 style="text-align:center!important;">&nbsp;</h3>
-        
+
     </div>
     <div class="row">
-        @for (int i = 0; i < 13; i++)
-        {
-            <div class="col-md-4 col-sm-12 col-xs-12">
-                <div class="blog_data">
-                    <div class="img_data">
-                        <img src="~/Images/background.png" style="max-height:190px;" />
-                        <div class="hover_data">
-                            <span>
-                                <a href="@Url.Action("Navratri2016", "Home")" >Play</a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="blog_contant text-center">
-                        <a id="aNavratri2016" href="@Url.Action("Navratri2016", "Home")" ><h4>Title</h4></a>
+
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="blog_data">
+                <div class="img_data">
+                    <img src="~/Images/background.png" style="height:190px;" class="img-thumbnail img-responsive" />
+                    <div class="hover_data">
+                        <span>
+                            <a href="@Url.Action("Navratri2016", "Home")">Play</a>
+                        </span>
                     </div>
                 </div>
+                <div class="blog_contant text-center">
+                    <a id="aNavratri2016" href="@Url.Action("Navratri2016", "Home")"><h4>Title</h4></a>
+                </div>
             </div>
-        }
+        </div>
+
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="blog_data">
+                <div class="img_data">
+                    <img src="~/Images/WishNavratri.gif" style="height:190px;" class="img-thumbnail img-responsive" />
+                    <div class="hover_data">
+                        <span>
+                            <a href="@Url.Action("WishNavratri", "Home")">Play</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="blog_contant text-center">
+                    <a id="aNavratri2016" href="@Url.Action("WishNavratri", "Home")"><h4>Title</h4></a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

@@ -3,6 +3,7 @@
     ViewBag.Title = @ViewBag.AppTitle;
     Layout = "~/Views/Shared/_Layout.cshtml";
     var mainappimageurl = "/Images/WishNavratri.gif";
+    var appDescription = "Wish Happy Navarati to your friends !";
 }
 
 <meta property="og:url" content="@Request.Url.ToString()" />
@@ -21,7 +22,7 @@
                 <img src="@mainappimageurl" class="img-thumbnail img-responsive center-block" />
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <p>Application Description</p>
+                <p>@appDescription</p>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="text-center">
