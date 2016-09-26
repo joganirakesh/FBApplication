@@ -44,7 +44,7 @@ namespace SampleFacebookBirthdayApp.Controllers
         public ActionResult WishNavratri()
         {
             ViewBag.AppName = "WishNavratri";
-            ViewBag.AppTitle = "WISH HAPPY JANMASHTAMI TO YOUR FRIENDS !";
+            ViewBag.AppTitle = "WISH HAPPY NAVRATRI TO YOUR FRIENDS !";
             return View();
         }
 
