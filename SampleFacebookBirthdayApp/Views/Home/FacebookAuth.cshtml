@@ -1,10 +1,9 @@
 ﻿@using Microsoft.AspNet.Facebook
 @{
-    ViewBag.Title = "MyFBApp";
+    ViewBag.Title = "Facebook Authentication";
 }
 <script src="//connect.facebook.net/en_US/all.js"></script>
 <script>
-
     window.fbAsyncInit = function () {
         FB.init({
             appId: '@GlobalFacebookConfiguration.Configuration.AppId', // App ID
@@ -31,32 +30,27 @@
                         // Insert your code here
                         FB.api('/me/picture', 'GET', { "height": "250", "width": "220" }, function (response) {
                             // Insert your code here
-                            ProcessAppLogin(@GlobalFacebookConfiguration.Configuration.AppId,responseUserProfile.id,response.data.url,responseUserProfile.name);
-
+                            Navratri2016("Navratri2016", responseUserProfile.id, response.data.url, responseUserProfile.name);
                         });
                     });
-
-
                 } else {
                     console.log('Authorization failed.');
                 }
             }, { scope: 'email' });
-
         });
     }
 
-    function ProcessAppLogin(AppId, FBUserId,profileurl,username)  {
+    function Navratri2016(AppName, FBUserId, profileurl, username) {
 
         $.ajax({
             type: "POST",
-            url: '@Url.Action("ProcessAppLogin", "Home")',
+            url: '@Url.Action("Navratri2016", "Home")',
             dataType: "json",
-            contentType: "application/json; charset=utf-8",// Not to set any content header
-            data: "{AppId:'"+AppId+"',FBUserId:'"+FBUserId+"',profileurl:'"+profileurl+"',username:'"+username+"'}",
+            contentType: "application/json; charset=utf-8",
+            data: "{AppName:'" + AppName + "',FBUserId:'" + FBUserId + "',profileurl:'" + profileurl + "',username:'" + username + "'}",
             success: function (result) {
                 if (result == "done") {
-                    // alert(result);
-                    window.top.location = "https://localhost:44306/Home/result?AppId=" + AppId +"&FBUserId=" + FBUserId+"&username="+username;
+                    window.top.location = "https://localhost:44306/Home/result?AppName=" + AppName + "&FBUserId=" + FBUserId + "&username=" + username;
                 }
             },
             error: function (err) {
@@ -66,5 +60,3 @@
     }
 
 </script>
-
-

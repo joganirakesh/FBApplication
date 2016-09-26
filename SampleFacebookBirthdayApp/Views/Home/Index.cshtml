@@ -1,35 +1,90 @@
 ﻿@using Microsoft.AspNet.Facebook
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "A to Z Apps";
 }
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#btnGotoMyApp").click(function () {
-            var redirect_url = "https://localhost:44306/Home/MyFBApp";
-            var appID = @GlobalFacebookConfiguration.Configuration.AppId;
-            var scope = "public_profile%2Cuser_friends%2Cpublish_actions%2Cemail%2Cuser_education_history%2Cuser_location%2Cuser_hometown%2Cuser_work_history%2Cuser_about_me%2Cuser_actions.books%2Cuser_photos%2Cuser_birthday";
-            window.location = "https://www.facebook.com/v2.5/dialog/oauth?client_id=" +appID +"&redirect_uri=" + redirect_url + "&scope="+scope;
-        });
-    });
-</script>
+<style>
+    .blog_data {
+        background: #ffffff none repeat scroll 0 0;
+        border: medium none;
+        border-radius: 0.285714rem;
+        box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        min-height: 0;
+        padding: 0;
+        position: relative;
+        transition: box-shadow 0.1s ease 0s, transform 0.1s ease 0s;
+        width: 100%;
+        margin-bottom: 13px;
+    }
 
+    .img_data {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+    }
+
+        .img_data img {
+            width: 100%;
+        }
+
+        .img_data:hover .hover_data {
+            display: block;
+        }
+
+    .hover_data {
+        background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        display: none;
+    }
+
+        .hover_data span a {
+            border: 1px solid #f2711c;
+            color: #f2711c;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 12%;
+            margin-left: 40%;
+            padding: 5px 20px;
+            text-decoration: none;
+        }
+
+    .blog_contant {
+        display: inline-block;
+        padding: 6px 2px;
+        width: 100%;
+        margin-left: 5px;
+        max-height: 77px;
+    }
+</style>
 <div class="container ">
+    
     <div class="page-header">
-        @*<h3 style="text-align:center!important;">Navratri! E Halo halo! Dandia ramva!...</h3>*@
-        <h3 style="text-align:center!important;">ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા</h3>
+        <h3 style="text-align:center!important;">&nbsp;</h3>
+        
     </div>
     <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12 " style="padding-bottom:25px;">
-            <img src="~/Images/background.png" class="img-thumbnail img-responsive center-block" />
-        </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 ">
-            <div class="text-center">
-                <a id="btnGotoMyApp" href="javascript:" class="btn  btn-social1 btn-facebook1">
-                    <span class="glyphicon glyphicon-thumbs-up  "></span> Check Your Result
-                </a>
+        @for (int i = 0; i < 13; i++)
+        {
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="blog_data">
+                    <div class="img_data">
+                        <img src="~/Images/background.png" style="max-height:190px;" />
+                        <div class="hover_data">
+                            <span>
+                                <a href="@Url.Action("Navratri2016", "Home")" >Play</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="blog_contant text-center">
+                        <a id="aNavratri2016" href="@Url.Action("Navratri2016", "Home")" ><h4>Title</h4></a>
+                    </div>
+                </div>
             </div>
-        </div>
+        }
     </div>
-
-
 </div>

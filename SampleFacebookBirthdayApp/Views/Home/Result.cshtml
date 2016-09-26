@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNet.Facebook
 @{
-    ViewBag.Title = "Result";
+    ViewBag.Title = "A to Z Apps";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <meta property="og:url" content="@Request.Url.ToString()" />
@@ -8,35 +8,20 @@
 <meta property="og:title" content="Your Website Title" />
 <meta property="og:description" content="Your description" />
 <meta property="og:image" content="@ViewBag.resulturl" />
-<script>
 
-    
-    @*$(document).ready(function () {
-        var currentUrl = "@Request.Url.ToString()";
-        $("#afbsharebutton").attr("href", "https://www.facebook.com/sharer/sharer.php?u=" + currentUrl + "src=sdkpreparse");
-        $("#dvshare").attr("data-href", currentUrl);
-        FB.ui({
-            method: 'share',
-            display: 'popup',
-            href: 'https://developers.facebook.com/docs/',
-        }, function (response) { });
-    });*@
 
-</script>
-
-<div class="container ">
-    <div class="page-header ">
-        <h2 style="text-align:center!important;font-weight:600!important;">ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા</h2>
+<div class="page-header ">
+    <h2 style="text-align:center!important;font-weight:600!important;">@ViewBag.AppTitle</h2>
+</div>
+<div class="row ">
+    <div class="col-md-12 col-sm-12 col-xs-12 " style="padding-bottom:25px;">
+        <img src="@ViewBag.resulturl" class="img-thumbnail img-responsive center-block" style="width:773px;height:430px;" />
     </div>
-    <div class="row ">
-        <div class="col-md-12 col-sm-12 col-xs-12 " style="padding-bottom:25px;">
-            <img src="@ViewBag.resulturl" class="img-thumbnail img-responsive center-block" style="width:773px;height:430px;" />
-        </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-            <div id="shareBtn" class="btn btn-success clearfix">Share</div>
-        </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+        <div id="shareBtn" class="btn btn-success clearfix">Share</div>
     </div>
 </div>
+
 
 <script>
     (function (d, s, id) {

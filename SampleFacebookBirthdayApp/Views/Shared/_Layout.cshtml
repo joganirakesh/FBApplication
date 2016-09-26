@@ -10,8 +10,10 @@
     <meta property="fb:app_id" content="@GlobalFacebookConfiguration.Configuration.AppId" />
 </head>
 <body id="top">
+
     @Html.Partial("_HeaderPortion")
-    <div class="maincontainer">
+    <div class="container">
+        <div class="row" style="margin-top:80px;"></div>
         @RenderBody()
     </div>
     @*@Html.Partial("_FooterPortion")*@
