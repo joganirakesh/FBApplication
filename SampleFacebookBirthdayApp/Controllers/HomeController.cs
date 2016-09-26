@@ -41,6 +41,13 @@ namespace SampleFacebookBirthdayApp.Controllers
             return View();
         }
 
+        public ActionResult WishNavratri()
+        {
+            ViewBag.AppName = "WishNavratri";
+            ViewBag.AppTitle = "WISH HAPPY JANMASHTAMI TO YOUR FRIENDS !";
+            return View();
+        }
+
        
         private static Stream GetStreamFromUrl(string url)
         {
