@@ -223,6 +223,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\Happy-Navratri-Photos-final.jpg" />
+    <Content Include="Images\Happy-Navratri-Photos.jpg" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
