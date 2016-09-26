@@ -10,6 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Drawing.Imaging;
 using System.Net;
+using SampleFacebookBirthdayApp.Helpers;
 
 namespace SampleFacebookBirthdayApp.Controllers
 {
@@ -36,8 +37,45 @@ namespace SampleFacebookBirthdayApp.Controllers
 
         public ActionResult Navratri2016()
         {
+            string profileurl = "http://arswiki.info/twiki/pub/Main/UserProfileHeader/default-user-profile.jpg";
+            string AppName = "111";
+            string FBUserId = "111";
+            string username = "rakeshjogani";
+            Image imgbackground = Image.FromFile(Server.MapPath("~/111/111") + "//Happy-Navratri-Photos.jpg");
+
+            Graphics g = Graphics.FromImage(imgbackground);
+
+            using (WebClient webClient = new WebClient())
+            {
+                byte[] data = webClient.DownloadData(profileurl);
+
+                using (MemoryStream mem = new MemoryStream(data))
+                {
+                    Image yourImage = Image.FromStream(mem);
+                    yourImage = ImageHelper.RoundCorners(yourImage, 80);
+                    
+                    using (yourImage)
+                    {
+
+                        g.DrawImage(yourImage, new Point(20, 20));
+                    }
+                }
+
+            }
+            Bitmap bitmap_Background = (Bitmap)imgbackground;
+
+            var UserProfileData = Server.MapPath("~/FBUserInformation/" + AppName + "//" + FBUserId);
+            if (!Directory.Exists(UserProfileData))
+            {
+                Directory.CreateDirectory(UserProfileData);
+            }
+            imgbackground.Save(UserProfileData + "\\" + username + ".jpg", ImageFormat.Jpeg);
+            imgbackground.Dispose();
+
+
             ViewBag.AppName = "Navratri2016";
-            ViewBag.AppTitle = "ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા";
+            //ViewBag.AppTitle = "ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા";
+            ViewBag.AppTitle = "";
             return View();
         }
 
@@ -48,7 +86,7 @@ namespace SampleFacebookBirthdayApp.Controllers
             return View();
         }
 
-       
+
         private static Stream GetStreamFromUrl(string url)
         {
             byte[] imageData = null;
@@ -69,7 +107,7 @@ namespace SampleFacebookBirthdayApp.Controllers
         }
 
         #endregion
-       
+
         #region WebMethod
 
         [HttpPost]

@@ -9,12 +9,12 @@ namespace SampleFacebookBirthdayApp.Helpers
 {
     public static class ImageHelper
     {
-        public static Image RoundCorners(Image StartImage, int CornerRadius, Color BackgroundColor)
+        public static Image RoundCorners(Image StartImage, int CornerRadius)
         {
             CornerRadius *= 2;
             Bitmap RoundedImage = new Bitmap(StartImage.Width, StartImage.Height);
             Graphics g = Graphics.FromImage(RoundedImage);
-            g.Clear(BackgroundColor);
+
             g.SmoothingMode = SmoothingMode.AntiAlias;
             Brush brush = new TextureBrush(StartImage);
             GraphicsPath gp = new GraphicsPath();
@@ -25,5 +25,49 @@ namespace SampleFacebookBirthdayApp.Helpers
             g.FillPath(brush, gp);
             return RoundedImage;
         }
+        public static Bitmap DrawRoundedRectangle(Image im, Int32 Radius)
+        {
+            Bitmap Bmp = new Bitmap(im, im.Width, im.Height);
+            Graphics G = Graphics.FromImage(Bmp);
+            Brush brush = new System.Drawing.SolidBrush(Color.Red);
+
+            for (int i = 0; i < 4; i++)
+            {
+                Point[] CornerUpLeft = new Point[3];
+
+                CornerUpLeft[0].X = 0;
+                CornerUpLeft[0].Y = 0;
+
+                CornerUpLeft[1].X = Radius;
+                CornerUpLeft[1].Y = 0;
+
+                CornerUpLeft[2].X = 0;
+                CornerUpLeft[2].Y = Radius;
+
+                System.Drawing.Drawing2D.GraphicsPath pathCornerUpLeft = new System.Drawing.Drawing2D.GraphicsPath();
+
+                pathCornerUpLeft.AddArc(CornerUpLeft[0].X, CornerUpLeft[0].Y,
+                    Radius, Radius, 180, 90);
+                pathCornerUpLeft.AddLine(CornerUpLeft[0].X, CornerUpLeft[0].Y,
+                    CornerUpLeft[1].X, CornerUpLeft[1].Y);
+                pathCornerUpLeft.AddLine(CornerUpLeft[0].X, CornerUpLeft[0].Y,
+                    CornerUpLeft[2].X, CornerUpLeft[2].Y);
+
+                G.FillPath(brush, pathCornerUpLeft);
+                pathCornerUpLeft.Dispose();
+
+                Bmp.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            }
+            brush.Dispose();
+            G.Dispose();
+
+            Color backColor = Bmp.GetPixel(0, 0);
+
+            Bmp.MakeTransparent(backColor);
+
+            return Bmp;
+
+        }
+
     }
 }
