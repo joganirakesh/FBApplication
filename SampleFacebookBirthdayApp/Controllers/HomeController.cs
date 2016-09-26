@@ -15,7 +15,15 @@ namespace SampleFacebookBirthdayApp.Controllers
 {
     public class HomeController : Controller
     {
+        #region Page Controller
+
         public ActionResult Index(string context)
+        {
+            return View();
+        }
+
+        [FacebookAuthorize()]
+        public ActionResult FacebookAuth(FacebookContext context)
         {
             return View();
         }
@@ -25,6 +33,14 @@ namespace SampleFacebookBirthdayApp.Controllers
         {
             return View();
         }
+
+        public ActionResult Navratri2016()
+        {
+            ViewBag.AppName = "Navratri2016";
+            return View();
+        }
+
+       
         private static Stream GetStreamFromUrl(string url)
         {
             byte[] imageData = null;
@@ -35,15 +51,21 @@ namespace SampleFacebookBirthdayApp.Controllers
             return new MemoryStream(imageData);
         }
 
-        public ActionResult Result(string AppId, string FBUserId, string username)
+        public ActionResult Result(string AppName, string FBUserId, string username)
         {
-            ViewBag.resulturl = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~") + "//FBUserInformation//" + AppId + "//" + FBUserId + "//" + username + ".jpg"); // /TESTERS/Default6.aspx + "output.jpg";
+            ViewBag.AppName = AppName;
+            ViewBag.AppTitle = "ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા";
+            ViewBag.resulturl = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~") + "//FBUserInformation//" + AppName + "//" + FBUserId + "//" + username + ".jpg"); // /TESTERS/Default6.aspx + "output.jpg";
 
             return View();
         }
 
+        #endregion
+       
+        #region WebMethod
+
         [HttpPost]
-        public ActionResult ProcessAppLogin(string AppId, string FBUserId, string profileurl, string username)
+        public ActionResult Navratri2016(string AppName, string FBUserId, string profileurl, string username)
         {
             Image imgbackground = Image.FromFile(Server.MapPath("~/Images") + "//Happy-Navratri-Photos.jpg");
             Graphics g = Graphics.FromImage(imgbackground);
@@ -63,7 +85,7 @@ namespace SampleFacebookBirthdayApp.Controllers
             }
             Bitmap bitmap_Background = (Bitmap)imgbackground;
 
-            var UserProfileData = Server.MapPath("~/FBUserInformation/" + AppId + "//" + FBUserId);
+            var UserProfileData = Server.MapPath("~/FBUserInformation/" + AppName + "//" + FBUserId);
             if (!Directory.Exists(UserProfileData))
             {
                 Directory.CreateDirectory(UserProfileData);
@@ -72,5 +94,8 @@ namespace SampleFacebookBirthdayApp.Controllers
             imgbackground.Dispose();
             return Json("done", JsonRequestBehavior.AllowGet);
         }
+
+        #endregion
+
     }
 }
