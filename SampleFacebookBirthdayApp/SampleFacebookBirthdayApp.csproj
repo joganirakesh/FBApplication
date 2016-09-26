@@ -280,6 +280,7 @@
     <Content Include="Views\Home\Result.cshtml" />
     <Content Include="Views\Home\Navratri2016.cshtml" />
     <Content Include="Views\Home\FacebookAuth.cshtml" />
+    <Content Include="Views\Shared\_LatestApps.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

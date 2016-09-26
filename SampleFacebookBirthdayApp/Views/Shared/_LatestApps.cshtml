@@ -1,0 +1,32 @@
+﻿<style>
+    .latestapps_header {
+        border: 1px #ddd solid;
+        background-color: #b2c834;
+        padding: 15px;
+        margin-bottom: 10px;
+        color: #666 !important;
+        font-size: 18px;
+        font-weight: 600;
+    }
+</style>
+<div class="row latestapps_header">
+    LATEST APPS
+</div>
+@for (int i = 0; i < 10; i++)
+{
+    <div class="row">
+        <div class="blog_data">
+            <div class="img_data">
+                <img src="~/Images/background.png" />
+                <div class="hover_data">
+                    <span>
+                        <a href="@Url.Action("Navratri2016", "Home")">Play</a>
+                    </span>
+                </div>
+            </div>
+            <div class="blog_contant text-center">
+                <a id="aNavratri2016" href="@Url.Action("Navratri2016", "Home")" target="_blank"><h4>Title</h4></a>
+            </div>
+        </div>
+    </div>
+}

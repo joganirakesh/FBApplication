@@ -2,79 +2,16 @@
 @{
     ViewBag.Title = "Navrati 2016";
 }
-<style>
-    .blog_data {
-        background: #ffffff none repeat scroll 0 0;
-        border: medium none;
-        border-radius: 0.285714rem;
-        box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-        display: flex;
-        flex-direction: column;
-        max-width: 100%;
-        min-height: 0;
-        padding: 0;
-        position: relative;
-        transition: box-shadow 0.1s ease 0s, transform 0.1s ease 0s;
-        width: 100%;
-        margin-bottom: 13px;
-    }
 
-    .img_data {
-        display: inline-block;
-        position: relative;
-        width: 100%;
-    }
+<meta property="og:url" content="@Request.Url.ToString()" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="@ViewBag.AppTitle" />
+<meta property="og:description" content="@ViewBag.AppTitle" />
+<meta property="og:image" content="~/Images/background.png" />
 
-        .img_data img {
-            width: 100%;
-        }
-
-        .img_data:hover .hover_data {
-            display: block;
-        }
-
-    .hover_data {
-        background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        display: none;
-    }
-
-        .hover_data span a {
-            border: 1px solid #f2711c;
-            color: #f2711c;
-            display: inline-block;
-            font-size: 16px;
-            margin-top: 10%;
-            margin-left: 40%;
-            padding: 5px 20px;
-            text-decoration: none;
-        }
-
-    .blog_contant {
-        display: inline-block;
-        padding: 6px 2px;
-        width: 100%;
-        margin-left: 5px;
-        max-height: 77px;
-    }
-
-    .latestapps_header {
-        border: 1px #ddd solid;
-        background-color: #b2c834;
-        padding: 15px;
-        margin-bottom: 10px;
-        color: #666 !important;
-        font-size: 18px;
-        font-weight: 600;
-    }
-</style>
 
 <div class="page-header">
-    @*<h3 style="text-align:center!important;">ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા</h3>*@
-    <h3>Title</h3>
+    <h3 style="font-weight:600;">@ViewBag.AppTitle</h3>
 </div>
 <div class="row">
     <div class="col-md-9 col-sm-10 col-xm-12">
@@ -97,38 +34,15 @@
                 <li><a href="https://www.facebook.com/sharer/sharer.php?u=@Request.Url" target="_blank" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="https://twitter.com/home?status=@Request.Url" target="_blank" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="https://plus.google.com/share?url=@Request.Url" target="_blank" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=@Request.Url&title=&summary=&source=" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#" target="_blank" class="icoPinterest" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=@Request.Url&title=@ViewBag.AppTitle&summary=&source=" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="https://pinterest.com/pin/create/button/?url=@Request.Url&media=@ViewBag.AppTitle&description=@ViewBag.AppTitle" target="_blank" class="icoPinterest" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
             </ul>
-
         </div>
     </div>
     <div class="col-md-3 col-sm-2 col-xm-12">
-        <div class="row latestapps_header">
-            LATEST APPS
-        </div>
-        @for (int i = 0; i < 10; i++)
-        {
-            <div class="row">
-                <div class="blog_data">
-                    <div class="img_data">
-                        <img src="~/Images/background.png" />
-                        <div class="hover_data">
-                            <span>
-                                <a href="@Url.Action("Navratri2016", "Home")">Play</a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="blog_contant text-center">
-                        <a id="aNavratri2016" href="@Url.Action("Navratri2016", "Home")" target="_blank"><h4>Title</h4></a>
-                    </div>
-                </div>
-            </div>
-        }
+        @Html.Partial("_LatestApps")
     </div>
-
 </div>
-
 
 <script type="text/javascript">
     $(document).ready(function () {
