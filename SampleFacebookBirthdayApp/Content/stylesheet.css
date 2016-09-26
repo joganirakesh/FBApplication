@@ -469,6 +469,10 @@ ul.social-network {
     background-color: #fe3d2e;
 }
 
+.social-network a.icoPinterest:hover {
+    background-color: #ea1514;
+}
+
 .social-network a.icoRss:hover i, .social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i,
 .social-network a.icoGoogle:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i {
     color: #fff;
