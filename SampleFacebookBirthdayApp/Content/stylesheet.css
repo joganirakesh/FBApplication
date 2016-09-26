@@ -23,9 +23,9 @@
 .header {
     position: fixed;
     width: 100%;
-    padding: 20px 0px 0px 0px;
+    padding: 15px 0px 0px 0px;
     background: #fff;
-    border-bottom: 1px solid #47c9af;
+    border-bottom: 1px solid #b2c834;
     z-index: 888;
     -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
@@ -312,7 +312,7 @@ p {
     Contact Us
  ========================== */
 .page-header {
-    margin: 15px 0 15px;
+    margin: 10px 0 10px;
     width: 100%;
 }
 
@@ -623,4 +623,26 @@ ul.styled > li > a {
 table thead{
     background-color:#47c9af !important;
     color:white !important;
+}
+
+  .btn-facebook1 {
+    margin-bottom: 16px;
+}
+    .btn-facebook1 {
+    color: #fff;
+    background-color: #304d8a;
+    border-color: rgba(0,0,0,0.2);
+}
+    .btn-social1 {
+    position: relative;
+    padding: 11px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+    .btn-facebook1:hover {
+    color: #fff;
+    background-color: #2d4373;
+    border-color: rgba(0,0,0,0.2);
 }

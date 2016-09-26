@@ -9,16 +9,17 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Net;
 
 namespace SampleFacebookBirthdayApp.Controllers
 {
     public class HomeController : Controller
     {
-
         public ActionResult Index(string context)
         {
             return View();
         }
+
         [FacebookAuthorize()]
         public ActionResult MyFBApp(FacebookContext context)
         {
@@ -33,26 +34,43 @@ namespace SampleFacebookBirthdayApp.Controllers
 
             return new MemoryStream(imageData);
         }
-       
-        public ActionResult Result(FacebookContext context)
+
+        public ActionResult Result(string AppId, string FBUserId, string username)
         {
-            
-            Image imgbackground = Image.FromFile(Server.MapPath("~/Images") + "//background.png");
+            ViewBag.resulturl = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~") + "//FBUserInformation//" + AppId + "//" + FBUserId + "//" + username + ".jpg"); // /TESTERS/Default6.aspx + "output.jpg";
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ProcessAppLogin(string AppId, string FBUserId, string profileurl, string username)
+        {
+            Image imgbackground = Image.FromFile(Server.MapPath("~/Images") + "//Happy-Navratri-Photos.jpg");
             Graphics g = Graphics.FromImage(imgbackground);
 
+            using (WebClient webClient = new WebClient())
+            {
+                byte[] data = webClient.DownloadData(profileurl);
 
-            g.DrawImage(Image.FromStream(GetStreamFromUrl("https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/user-male-circle-blue-128.png")), new Point(50, 50));
+                using (MemoryStream mem = new MemoryStream(data))
+                {
+                    using (var yourImage = Image.FromStream(mem))
+                    {
+                        g.DrawImage(yourImage, new Point(20, 20));
+                    }
+                }
 
-           // g.DrawImage(Image.FromStream(GetStreamFromUrl("http://image.flaticon.com/icons/png/128/149/149071.png")), new Point(150, 150));
-
+            }
             Bitmap bitmap_Background = (Bitmap)imgbackground;
-            imgbackground.Save(Server.MapPath("~/Images") + "\\output.jpg", ImageFormat.Jpeg);
+
+            var UserProfileData = Server.MapPath("~/FBUserInformation/" + AppId + "//" + FBUserId);
+            if (!Directory.Exists(UserProfileData))
+            {
+                Directory.CreateDirectory(UserProfileData);
+            }
+            imgbackground.Save(UserProfileData + "\\" + username + ".jpg", ImageFormat.Jpeg);
             imgbackground.Dispose();
-            ViewBag.resulturl = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~")) +"//Images//output.jpg"; // /TESTERS/Default6.aspx + "output.jpg";
-            return View();
-            //MemoryStream ms = new MemoryStream();
-            //imgbackground.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-            //return File(ms.ToArray(), "image/png");
+            return Json("done", JsonRequestBehavior.AllowGet);
         }
     }
 }

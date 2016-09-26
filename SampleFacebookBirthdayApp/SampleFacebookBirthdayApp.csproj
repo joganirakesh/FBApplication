@@ -218,10 +218,11 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Images\atozviral.png" />
     <Content Include="Images\background.png" />
-    <Content Include="Images\arrow.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Happy-Navratri-Photos-final.jpg" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>

@@ -13,7 +13,6 @@
             xfbml: true  // parse XFBML
         });
         loadDocument();
-
     };
 
     function loadDocument() {
@@ -28,14 +27,15 @@
 
             FB.getLoginStatus(function (res) {
                 if (res.authResponse) {
-                    FB.api('/me', 'GET', { "fields": "email,name,first_name,last_name,about" }, function (response) {
-                        var obj = response;
-                        $("#spfacebookid").text(response.id);
-                        $("#spEmail").text(response.email);
-                        $("#spfirst_name").text(response.first_name);
-                        $("#splast_name").text(response.last_name);
-                        $("#spname").text(response.name);
+                    FB.api('/me', 'GET', { "fields": "id,name" }, function (responseUserProfile) {
+                        // Insert your code here
+                        FB.api('/me/picture', 'GET', { "height": "250", "width": "220" }, function (response) {
+                            // Insert your code here
+                            ProcessAppLogin(@GlobalFacebookConfiguration.Configuration.AppId,responseUserProfile.id,response.data.url,responseUserProfile.name);
+
+                        });
                     });
+
 
                 } else {
                     console.log('Authorization failed.');
@@ -45,24 +45,28 @@
         });
     }
 
+    function ProcessAppLogin(AppId, FBUserId,profileurl,username)  {
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ProcessAppLogin", "Home")',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",// Not to set any content header
+            data: "{AppId:'"+AppId+"',FBUserId:'"+FBUserId+"',profileurl:'"+profileurl+"',username:'"+username+"'}",
+            success: function (result) {
+                if (result == "done") {
+                    // alert(result);
+                    window.top.location = "https://localhost:44306/Home/result?AppId=" + AppId +"&FBUserId=" + FBUserId+"&username="+username;
+                }
+            },
+            error: function (err) {
+                alert(err.statusText);
+            }
+        });
+    }
 
 </script>
 <div class="container">
-    <div class="row">
-        <label>Facebook ID: <span id="spfacebookid"></span></label>
-    </div>
-    <div class="row">
-        <label>Email: <span id=""></span></label>
-    </div>
-    <div class="row">
-        <label>Fist Name: <span id="spfirst_name"></span></label>
-    </div>
-    <div class="row">
-        <label>Last Name: <span id="splast_name"></span></label>
-    </div>
-    <div class="row">
-        <label>Display Name: <span id="spname"></span></label>
-    </div>
 
 </div>
 

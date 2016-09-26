@@ -4,25 +4,17 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title - My ASP.NET MVC Application</title>
-    @*@Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")*@
-
     <script src="~/Scripts/jquery-1.10.2.js"></script>
-
     <link href="~/Content/bootstrap.css?ver=1" rel="stylesheet" />
-
     <link href="~/Content/stylesheet.css?ver=1" rel="stylesheet" />
-    
-    
+    <meta property="fb:app_id" content="@GlobalFacebookConfiguration.Configuration.AppId" />
 </head>
-<body>
+<body id="top">
     @Html.Partial("_HeaderPortion")
-    <div  class="maincontainer">
+    <div class="maincontainer">
         @RenderBody()
     </div>
-    @Html.Partial("_FooterPortion")
+    @*@Html.Partial("_FooterPortion")*@
 
 </body>
 </html>
