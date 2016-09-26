@@ -141,7 +141,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\BirthdayCalculator.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Models\MyAppUserFriend.cs" />
     <Compile Include="Models\MyAppUser.cs" />
     <Compile Include="Models\FacebookPicture.cs" />
@@ -277,6 +277,8 @@
     <Content Include="Views\Shared\_HeaderPortion.cshtml" />
     <Content Include="Views\Shared\_FooterPortion.cshtml" />
     <Content Include="Views\Home\Result.cshtml" />
+    <Content Include="Views\Home\Navratri2016.cshtml" />
+    <Content Include="Views\Home\FacebookAuth.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
