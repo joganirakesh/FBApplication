@@ -12,12 +12,11 @@
 <div class="row latestapps_header">
     LATEST APPS
 </div>
-@for (int i = 0; i < 5; i++)
-{
+
     <div class="row">
         <div class="blog_data">
             <div class="img_data">
-                <img src="~/Images/background.png" />
+                <img src="~/Images/background.png" style="height:90px;" class="img-thumbnail img-responsive" />
                 <div class="hover_data">
                     <span>
                         <a href="@Url.Action("Navratri2016", "Home")">Play</a>
@@ -25,8 +24,21 @@
                 </div>
             </div>
             <div class="blog_contant text-center">
-                <a id="aNavratri2016" href="@Url.Action("Navratri2016", "Home")" target="_blank"><h4>Title</h4></a>
+                <a id="aNavratri2016" href="@Url.Action("Navratri2016", "Home")" target="_blank"><h5>ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા</h5></a>
+            </div>
+        </div>
+
+        <div class="blog_data">
+            <div class="img_data">
+                <img src="/Images/WishNavratri.gif" style="height:90px;" class="img-thumbnail img-responsive" />
+                <div class="hover_data">
+                    <span>
+                        <a href="@Url.Action("WishNavratri", "Home")">Play</a>
+                    </span>
+                </div>
+            </div>
+            <div class="blog_contant text-center">
+                <a id="aNavratri2016" href="@Url.Action("WishNavratri", "Home")" target="_blank"><h5>WISH HAPPY NAVRATRI TO YOUR FRIENDS !</h5></a>
             </div>
         </div>
     </div>
-}
