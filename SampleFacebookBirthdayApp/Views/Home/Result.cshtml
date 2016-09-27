@@ -14,14 +14,18 @@
     <h3 style="font-weight:600;">@ViewBag.AppTitle</h3>
 </div>
 <div class="row ">
-    <div class="col-md-12 col-sm-12 col-xs-12 " style="padding-bottom:25px;">
-        <img src="@ViewBag.resulturl" class="img-thumbnail img-responsive center-block" style="width:773px;height:430px;" />
+    <div class="col-md-9 col-sm-12 col-xm-12">
+        <div class="col-md-12 col-sm-12 col-xs-12 " style="padding-bottom:25px;">
+            <img src="@ViewBag.resulturl" class="img-thumbnail img-responsive center-block" style="width:773px;height:430px;" />
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+            <div id="shareBtn" class="btn btn-success clearfix">Share</div>
+        </div>
     </div>
-    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-        <div id="shareBtn" class="btn btn-success clearfix">Share</div>
+    <div class="col-md-3 col-sm-12 col-xm-12">
+        @Html.Partial("_LatestApps")
     </div>
 </div>
-
 
 <script>
     (function (d, s, id) {

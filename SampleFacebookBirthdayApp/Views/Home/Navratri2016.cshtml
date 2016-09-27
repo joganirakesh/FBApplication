@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = @ViewBag.AppTitle;
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var mainappimageurl = "/Images/AppImages/WishNavratri.gif";
     var appDescription = "Make Your Navarati Profile !";
 }
 
@@ -19,7 +20,7 @@
     <div class="col-md-9 col-sm-12 col-xm-12">
         <div class="app_data">
             <div class="col-md-12 col-sm-12 col-xs-12 ">
-                <img src="~/Images/background.png" class="img-thumbnail img-responsive center-block" />
+                <img src="@mainappimageurl" class="img-thumbnail img-responsive center-block" />
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <p>@appDescription</p>

@@ -20,7 +20,7 @@ namespace SampleFacebookBirthdayApp.Controllers
 
         public ActionResult Index(string context)
         {
-            BorderImage();
+           
             return View();
         }
 
@@ -125,10 +125,15 @@ namespace SampleFacebookBirthdayApp.Controllers
 
                 using (MemoryStream mem = new MemoryStream(data))
                 {
-                    using (var yourImage = Image.FromStream(mem))
+                    var yourImage = Image.FromStream(mem);
+                    yourImage = ImageHelper.RoundCorners(yourImage, ((yourImage.Width) / 2), Color.White,10);
+
+                    using (yourImage)
                     {
-                        g.DrawImage(yourImage, new Point(20, 20));
+                        g.DrawImage(yourImage, new Point(30, 30));
+
                     }
+                   
                 }
 
             }

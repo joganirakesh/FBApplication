@@ -30,13 +30,14 @@
                         // Insert your code here
                         FB.api('/me/picture', 'GET', { "height": "250", "width": "220" }, function (response) {
                             // Insert your code here
+
                             Navratri2016("Navratri2016", responseUserProfile.id, response.data.url, responseUserProfile.name);
                         });
                     });
                 } else {
                     console.log('Authorization failed.');
                 }
-            }, { scope: 'email' });
+            });
         });
     }
 
@@ -58,5 +59,13 @@
             }
         });
     }
-
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
 </script>

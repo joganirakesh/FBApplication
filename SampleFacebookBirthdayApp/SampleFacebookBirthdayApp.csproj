@@ -220,15 +220,15 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Images\AppImages\Dussehra.jpg" />
     <Content Include="Images\atozviral.png" />
     <Content Include="Images\background.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\favicon.ico" />
-    <Content Include="Images\Happy-Navratri-Photos-final.jpg" />
     <Content Include="Images\Happy-Navratri-Photos.jpg" />
-    <Content Include="Images\userprofile.png" />
-    <Content Include="Images\WishNavratri.gif" />
+    <Content Include="Images\AppImages\Mahatma-Gandhi-Wallpaper.jpg" />
+    <Content Include="Images\AppImages\WishNavratri.gif" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
@@ -280,7 +280,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\MyFBApp.cshtml" />
     <Content Include="Views\Shared\_HeaderPortion.cshtml" />
     <Content Include="Views\Shared\_FooterPortion.cshtml" />
     <Content Include="Views\Home\Result.cshtml" />
