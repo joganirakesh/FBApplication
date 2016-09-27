@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,7 @@ namespace SampleFacebookBirthdayApp.Helpers
 {
     public static class ImageHelper
     {
-        public static Image RoundCorners(Image StartImage, int CornerRadius)
+        public static Image RoundCorners(Image StartImage, int CornerRadius,Color borderColor,int borderThickness)
         {
             CornerRadius *= 2;
             Bitmap RoundedImage = new Bitmap(StartImage.Width, StartImage.Height);
@@ -23,6 +24,7 @@ namespace SampleFacebookBirthdayApp.Helpers
             gp.AddArc(0 + RoundedImage.Width - CornerRadius, 0 + RoundedImage.Height - CornerRadius, CornerRadius, CornerRadius, 0, 90);
             gp.AddArc(0, 0 + RoundedImage.Height - CornerRadius, CornerRadius, CornerRadius, 90, 90);
             g.FillPath(brush, gp);
+            g.DrawPath(new Pen(borderColor, borderThickness), gp);
             return RoundedImage;
         }
         public static Bitmap DrawRoundedRectangle(Image im, Int32 Radius)
@@ -68,6 +70,14 @@ namespace SampleFacebookBirthdayApp.Helpers
             return Bmp;
 
         }
+        public static Stream GetStreamFromUrl(string url)
+        {
+            byte[] imageData = null;
 
+            using (var wc = new System.Net.WebClient())
+                imageData = wc.DownloadData(url);
+
+            return new MemoryStream(imageData);
+        }
     }
 }

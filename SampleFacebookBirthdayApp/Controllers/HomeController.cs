@@ -20,6 +20,7 @@ namespace SampleFacebookBirthdayApp.Controllers
 
         public ActionResult Index(string context)
         {
+            BorderImage();
             return View();
         }
 
@@ -37,12 +38,46 @@ namespace SampleFacebookBirthdayApp.Controllers
 
         public ActionResult Navratri2016()
         {
-            string profileurl = "http://arswiki.info/twiki/pub/Main/UserProfileHeader/default-user-profile.jpg";
+            ViewBag.AppName = "Navratri2016";
+            ViewBag.AppTitle = "ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા";
+            return View();
+        }
+
+        public ActionResult WishNavratri()
+        {
+            ViewBag.AppName = "WishNavratri";
+            ViewBag.AppTitle = "WISH HAPPY NAVRATRI TO YOUR FRIENDS !";
+            return View();
+        }
+
+        public ActionResult Result(string AppName, string FBUserId, string username)
+        {
+            ViewBag.AppName = AppName;
+            ViewBag.AppTitle = "ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા";
+            ViewBag.resulturl = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~") + "//FBUserInformation//" + AppName + "//" + FBUserId + "//" + username + ".jpg"); // /TESTERS/Default6.aspx + "output.jpg";
+
+            return View();
+        }
+
+        private void DrawBitmapWithBorder(Bitmap bmp, Point pos, Graphics g)
+        {
+            const int borderSize = 20;
+
+            using (Brush border = new SolidBrush(Color.White /* Change it to whichever color you want. */))
+            {
+                g.FillRectangle(border, pos.X - borderSize, pos.Y - borderSize,
+                    bmp.Width + borderSize, bmp.Height + borderSize);
+            }
+
+            g.DrawImage(bmp, pos);
+        }
+        public void BorderImage()
+        {
+            string username = "rakeshjogani";
+            string profileurl = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTNryR26xQpEIOduxYUBfywVxdz31P0i2QZM_zvh-TO5RATZ8ydcw";
             string AppName = "111";
             string FBUserId = "111";
-            string username = "rakeshjogani";
-            Image imgbackground = Image.FromFile(Server.MapPath("~/111/111") + "//Happy-Navratri-Photos.jpg");
-
+            Image imgbackground = Image.FromFile(Server.MapPath("~/Images") + "//background.png");
             Graphics g = Graphics.FromImage(imgbackground);
 
             using (WebClient webClient = new WebClient())
@@ -51,13 +86,14 @@ namespace SampleFacebookBirthdayApp.Controllers
 
                 using (MemoryStream mem = new MemoryStream(data))
                 {
-                    Image yourImage = Image.FromStream(mem);
-                    yourImage = ImageHelper.RoundCorners(yourImage, 80);
+                    //var yourImage = Image.FromStream(mem);
+                    var yourImage = Image.FromFile(Server.MapPath("~/Images") + "//userprofile.png");
+                    yourImage = ImageHelper.RoundCorners(yourImage, ((yourImage.Width) / 2), Color.Gray, 0);
                     
                     using (yourImage)
                     {
-
                         g.DrawImage(yourImage, new Point(20, 20));
+
                     }
                 }
 
@@ -71,39 +107,6 @@ namespace SampleFacebookBirthdayApp.Controllers
             }
             imgbackground.Save(UserProfileData + "\\" + username + ".jpg", ImageFormat.Jpeg);
             imgbackground.Dispose();
-
-
-            ViewBag.AppName = "Navratri2016";
-            //ViewBag.AppTitle = "ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા";
-            ViewBag.AppTitle = "";
-            return View();
-        }
-
-        public ActionResult WishNavratri()
-        {
-            ViewBag.AppName = "WishNavratri";
-            ViewBag.AppTitle = "WISH HAPPY NAVRATRI TO YOUR FRIENDS !";
-            return View();
-        }
-
-
-        private static Stream GetStreamFromUrl(string url)
-        {
-            byte[] imageData = null;
-
-            using (var wc = new System.Net.WebClient())
-                imageData = wc.DownloadData(url);
-
-            return new MemoryStream(imageData);
-        }
-
-        public ActionResult Result(string AppName, string FBUserId, string username)
-        {
-            ViewBag.AppName = AppName;
-            ViewBag.AppTitle = "ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા";
-            ViewBag.resulturl = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~") + "//FBUserInformation//" + AppName + "//" + FBUserId + "//" + username + ".jpg"); // /TESTERS/Default6.aspx + "output.jpg";
-
-            return View();
         }
 
         #endregion
