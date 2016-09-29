@@ -30,8 +30,7 @@
                         // Insert your code here
                         FB.api('/me/picture', 'GET', { "height": "250", "width": "220" }, function (response) {
                             // Insert your code here
-
-                            Navratri2016("Navratri2016", responseUserProfile.id, response.data.url, responseUserProfile.name);
+                            NavratriSpecial("Navratri2016", responseUserProfile.id, response.data.url, responseUserProfile.name);
                         });
                     });
                 } else {
@@ -41,11 +40,11 @@
         });
     }
 
-    function Navratri2016(AppName, FBUserId, profileurl, username) {
+    function NavratriSpecial(AppName, FBUserId, profileurl, username) {
 
         $.ajax({
             type: "POST",
-            url: '@Url.Action("Navratri2016", "Home")',
+            url: '@Url.Action("NavratriSpecial", "Home")',
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             data: "{AppName:'" + AppName + "',FBUserId:'" + FBUserId + "',profileurl:'" + profileurl + "',username:'" + username + "'}",

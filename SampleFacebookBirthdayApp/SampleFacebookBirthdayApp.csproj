@@ -223,6 +223,7 @@
     <Content Include="Images\AppImages\Bhai-Dooj-info.jpg" />
     <Content Include="Images\AppImages\Dussehra.jpg" />
     <Content Include="Images\AppImages\HappyDiwali2016.jpg" />
+    <Content Include="Images\AppImages\WishingNavratri.jpg" />
     <Content Include="Images\atozviral.png" />
     <Content Include="Images\background.png" />
     <Content Include="favicon.ico" />
@@ -285,10 +286,10 @@
     <Content Include="Views\Shared\_HeaderPortion.cshtml" />
     <Content Include="Views\Shared\_FooterPortion.cshtml" />
     <Content Include="Views\Home\Result.cshtml" />
-    <Content Include="Views\Home\Navratri2016.cshtml" />
+    <Content Include="Views\Home\NavratriSpecial.cshtml" />
     <Content Include="Views\Home\FacebookAuth.cshtml" />
     <Content Include="Views\Shared\_LatestApps.cshtml" />
-    <Content Include="Views\Home\WishNavratri.cshtml" />
+    <Content Include="Views\Shared\_SocialSharing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

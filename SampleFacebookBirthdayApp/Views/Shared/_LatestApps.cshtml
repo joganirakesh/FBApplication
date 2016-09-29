@@ -1,44 +1,18 @@
-﻿<style>
-    .latestapps_header {
-        border: 1px #ddd solid;
-        background-color: #b2c834;
-        padding: 15px;
-        margin-bottom: 10px;
-        color: #666 !important;
-        font-size: 18px;
-        font-weight: 600;
-    }
-</style>
-<div class="row latestapps_header">
-    LATEST APPS
-</div>
-
-    <div class="row">
-        <div class="blog_data">
-            <div class="img_data">
-                <img src="~/Images/background.png" style="height:90px;" class="img-thumbnail img-responsive" />
-                <div class="hover_data">
-                    <span>
-                        <a href="@Url.Action("Navratri2016", "Home")">Play</a>
-                    </span>
-                </div>
-            </div>
-            <div class="blog_contant text-center">
-                <a id="aNavratri2016" href="@Url.Action("Navratri2016", "Home")" ><h5>ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા</h5></a>
+﻿<div class="row dvlatestapp">
+    <div class="latestapps_header">
+        <span>LATEST APPS</span>
+    </div>
+    <div class="blog_data">
+        <div class="img_data">
+            <img src="~/Images/AppImages/WishNavratri.gif" style="height:90px;" class="img-responsive" />
+            <div class="hover_data">
+                <span>
+                    <a href="@Url.Action("NavratriSpecial", "Home")">Play</a>
+                </span>
             </div>
         </div>
-
-        <div class="blog_data">
-            <div class="img_data">
-                <img src="~/Images/AppImages/WishNavratri.gif" style="height:90px;" class="img-thumbnail img-responsive" />
-                <div class="hover_data">
-                    <span>
-                        <a href="@Url.Action("WishNavratri", "Home")">Play</a>
-                    </span>
-                </div>
-            </div>
-            <div class="blog_contant text-center">
-                <a id="aNavratri2016" href="@Url.Action("WishNavratri", "Home")" ><h5>WISH HAPPY NAVRATRI TO YOUR FRIENDS !</h5></a>
-            </div>
+        <div class="blog_contant text-center">
+            <a href="@Url.Action("NavratriSpecial", "Home")"><h5>ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા</h5></a>
         </div>
     </div>
+</div>

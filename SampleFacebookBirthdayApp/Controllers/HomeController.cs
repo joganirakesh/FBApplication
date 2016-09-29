@@ -30,16 +30,12 @@ namespace SampleFacebookBirthdayApp.Controllers
             return View();
         }
 
-        [FacebookAuthorize()]
-        public ActionResult MyFBApp(FacebookContext context)
+        public ActionResult NavratriSpecial()
         {
-            return View();
-        }
-
-        public ActionResult Navratri2016()
-        {
-            ViewBag.AppName = "Navratri2016";
+            ViewBag.AppName = "NavratriSpecial";
             ViewBag.AppTitle = "ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા";
+            ViewBag.AppDescription = "ન​વરાત્રી! એ હાલો હાલો! ગરબે રમવા";
+
             return View();
         }
 
@@ -114,7 +110,7 @@ namespace SampleFacebookBirthdayApp.Controllers
         #region WebMethod
 
         [HttpPost]
-        public ActionResult Navratri2016(string AppName, string FBUserId, string profileurl, string username)
+        public ActionResult NavratriSpecial(string AppName, string FBUserId, string profileurl, string username)
         {
             Image imgbackground = Image.FromFile(Server.MapPath("~/Images") + "//Happy-Navratri-Photos.jpg");
             Graphics g = Graphics.FromImage(imgbackground);
