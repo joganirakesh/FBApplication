@@ -20,7 +20,7 @@ namespace SampleFacebookBirthdayApp.Controllers
 
         public ActionResult Index(string context)
         {
-           
+
             return View();
         }
 
@@ -43,6 +43,37 @@ namespace SampleFacebookBirthdayApp.Controllers
         {
             ViewBag.AppName = "WishNavratri";
             ViewBag.AppTitle = "WISH HAPPY NAVRATRI TO YOUR FRIENDS !";
+            ViewBag.AppDescription = "Wish happy navratri to your friends !";
+            return View();
+        }
+        public ActionResult HappyGandhiJayanti()
+        {
+            ViewBag.AppName = "HappyGandhiJayanti";
+            ViewBag.AppTitle = "WISH HAPPY BIRTHDAY TO MAHATMA GANDHIJI";
+            ViewBag.AppDescription = "My life is my message.' - Happy Gandhi Jayanti";
+            return View();
+        }
+        public ActionResult HappyDasara()
+        {
+            ViewBag.AppName = "HappyDasara";
+            ViewBag.AppTitle = "This special occassion may fulfill all Ur dreams came true.Happy Dasara";
+            ViewBag.AppDescription = "This special occassion may fulfill all Ur dreams came true.Happy Dasara";
+            return View();
+        }
+
+        public ActionResult HappyDiwali2016()
+        {
+            ViewBag.AppName = "HappyDiwali2016";
+            ViewBag.AppTitle = "May thousands of lamps beam up your life. Happy Diwali!";
+            ViewBag.AppDescription = "May thousands of lamps beam up your life. Happy Diwali!";
+            return View();
+        }
+
+        public ActionResult BhaiDoojWish2016()
+        {
+            ViewBag.AppName = "BhaiDoojWish2016";
+            ViewBag.AppTitle = "May this auspicious occasion bring you all the prosperity and good luck in your way of life. Happy Bhai Beej.";
+            ViewBag.AppDescription = "May this auspicious occasion bring you all the prosperity and good luck in your way of life. Happy Bhai Beej.";
             return View();
         }
 
@@ -85,7 +116,7 @@ namespace SampleFacebookBirthdayApp.Controllers
                     //var yourImage = Image.FromStream(mem);
                     var yourImage = Image.FromFile(Server.MapPath("~/Images") + "//userprofile.png");
                     yourImage = ImageHelper.RoundCorners(yourImage, ((yourImage.Width) / 2), Color.Gray, 0);
-                    
+
                     using (yourImage)
                     {
                         g.DrawImage(yourImage, new Point(20, 20));
@@ -122,14 +153,14 @@ namespace SampleFacebookBirthdayApp.Controllers
                 using (MemoryStream mem = new MemoryStream(data))
                 {
                     var yourImage = Image.FromStream(mem);
-                    yourImage = ImageHelper.RoundCorners(yourImage, ((yourImage.Width) / 2), Color.White,10);
+                    yourImage = ImageHelper.RoundCorners(yourImage, ((yourImage.Width) / 2), Color.White, 10);
 
                     using (yourImage)
                     {
                         g.DrawImage(yourImage, new Point(30, 30));
 
                     }
-                   
+
                 }
 
             }

@@ -248,8 +248,10 @@
     <Content Include="fonts\FontAwesome.otf" />
     <None Include="readme.txt" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\AppWiseProcess.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\common.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.js" />
@@ -290,6 +292,11 @@
     <Content Include="Views\Home\FacebookAuth.cshtml" />
     <Content Include="Views\Shared\_LatestApps.cshtml" />
     <Content Include="Views\Shared\_SocialSharing.cshtml" />
+    <Content Include="Views\Home\WishNavratri.cshtml" />
+    <Content Include="Views\Home\HappyGandhiJayanti.cshtml" />
+    <Content Include="Views\Home\HappyDasara.cshtml" />
+    <Content Include="Views\Home\HappyDiwali2016.cshtml" />
+    <Content Include="Views\Home\BhaiDoojWish2016.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

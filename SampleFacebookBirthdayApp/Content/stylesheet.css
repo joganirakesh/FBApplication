@@ -355,6 +355,7 @@ a.socialIcon:hover, .socialHoverClass {
     transition: box-shadow 0.1s ease 0s, transform 0.1s ease 0s;
     width: 100%;
     margin-bottom: 13px;
+    border-radius:5px;
 }
 
 .img_data {
@@ -378,6 +379,7 @@ a.socialIcon:hover, .socialHoverClass {
     top: 0;
     width: 100%;
     display: none;
+    border-radius:5px;
 }
 
     .hover_data span a {

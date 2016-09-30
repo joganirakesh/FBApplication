@@ -1,7 +1,9 @@
 ﻿@using Microsoft.AspNet.Facebook
 @{
     ViewBag.Title = "Facebook Authentication";
+    var AppID = @GlobalFacebookConfiguration.Configuration.AppId;
 }
+<script src="~/Scripts/common.js"></script>
 <script src="//connect.facebook.net/en_US/all.js"></script>
 <script>
     window.fbAsyncInit = function () {
@@ -11,60 +13,16 @@
             cookie: true, // enable cookies to allow the server to access the session
             xfbml: true  // parse XFBML
         });
-        loadDocument();
+        AppWiseProcess();
     };
+    function AppWiseProcess() {
+        if (getParameterByName("AppName") == "NavratriSpecial") {
+            NavratriSpecial();
+        }
+        else if (getParameterByName("AppName") == "WishNavratri") {
+            WishNavratri();
+        }
 
-    function loadDocument() {
-
-        $.getScript('//connect.facebook.net/en_US/sdk.js', function () {
-            FB.init({
-                appId: '@GlobalFacebookConfiguration.Configuration.AppId',
-                cookie: true,
-                cache: true,
-                version: 'v2.7' // or v2.1, v2.2, v2.3, ...
-            });
-
-            FB.getLoginStatus(function (res) {
-                if (res.authResponse) {
-                    FB.api('/me', 'GET', { "fields": "id,name" }, function (responseUserProfile) {
-                        // Insert your code here
-                        FB.api('/me/picture', 'GET', { "height": "250", "width": "220" }, function (response) {
-                            // Insert your code here
-                            NavratriSpecial("Navratri2016", responseUserProfile.id, response.data.url, responseUserProfile.name);
-                        });
-                    });
-                } else {
-                    console.log('Authorization failed.');
-                }
-            });
-        });
     }
-
-    function NavratriSpecial(AppName, FBUserId, profileurl, username) {
-
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action("NavratriSpecial", "Home")',
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            data: "{AppName:'" + AppName + "',FBUserId:'" + FBUserId + "',profileurl:'" + profileurl + "',username:'" + username + "'}",
-            success: function (result) {
-                if (result == "done") {
-                    window.top.location = "https://localhost:44306/Home/result?AppName=" + AppName + "&FBUserId=" + FBUserId + "&username=" + username;
-                }
-            },
-            error: function (err) {
-                alert(err.statusText);
-            }
-        });
-    }
-    function getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
+  
 </script>
