@@ -18,6 +18,7 @@ namespace SampleFacebookBirthdayApp.Controllers
     {
         #region Page Controller
 
+        [HandleError]
         public ActionResult Index(string context)
         {
 

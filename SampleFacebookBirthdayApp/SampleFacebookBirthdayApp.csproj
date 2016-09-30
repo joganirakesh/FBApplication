@@ -246,6 +246,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\FBAPP.pubxml" />
     <None Include="readme.txt" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\AppWiseProcess.js" />
